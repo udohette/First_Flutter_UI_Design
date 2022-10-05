@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SecondScreen extends StatefulWidget {
+
   const SecondScreen({Key? key}) : super(key: key);
 
   @override
@@ -11,8 +12,13 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   TextEditingController searchField = TextEditingController();
+  var size, height, width;
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
@@ -27,7 +33,6 @@ class _SecondScreenState extends State<SecondScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
            Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
@@ -109,8 +114,8 @@ class _SecondScreenState extends State<SecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      height: 150,
-                      width: 100,
+                      height: height/6,
+                      width: width/4,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: Colors.pink[100],
@@ -129,17 +134,16 @@ class _SecondScreenState extends State<SecondScreen> {
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
                           child: Text('All', style: TextStyle(color: Colors.white, fontSize: 25),),
-                        )
-
+                        ),
                       ],),
                     ),
                     SizedBox(width: 20),
                     Container(
-                      height: 150,
-                      width: 100,
+                      height: height/6,
+                      width: width/4,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Colors.grey[50]
+                        color: Colors.grey.shade200
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,17 +158,17 @@ class _SecondScreenState extends State<SecondScreen> {
                         ),
                         Padding(
                           padding:  EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                          child: Text('Art', style: TextStyle(color: Colors.grey[350], fontSize: 30),),
+                          child: Text('Art', style: TextStyle(color: Colors.black54, fontSize: 25),),
                         )
                       ],),
                     ),
                     SizedBox(width: 20),
                     Container(
-                      height: 150,
-                      width: 100,
+                      height: height/6,
+                      width: width/4,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                          color: Colors.grey[50]
+                          color: Colors.grey.shade200
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,17 +183,17 @@ class _SecondScreenState extends State<SecondScreen> {
                           ),
                           Padding(
                             padding:  EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                            child: Text('Music', style: TextStyle(color: Colors.grey[350], fontSize: 30),),
+                            child: Text('Music', style: TextStyle(color: Colors.black54, fontSize: 25),),
                           )
                         ],),
                     ),
                     SizedBox(width: 20),
                     Container(
-                      height: 150,
-                      width: 100,
+                      height: height/6,
+                      width: width/4,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Colors.grey[50]
+                          color: Colors.grey.shade200
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,7 +208,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           ),
                           Padding(
                             padding:  EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                            child: Text('Nature', style: TextStyle(color: Colors.grey[350], fontSize: 30, fontWeight: FontWeight.bold),),
+                            child: Text('Nature', style: TextStyle(color: Colors.black54, fontSize: 25,),),
                           )
                         ],),
                     ),
@@ -226,8 +230,8 @@ class _SecondScreenState extends State<SecondScreen> {
                         children: [
                         Container(
                           margin: EdgeInsets.only(bottom: 25),
-                    height: 180,
-                    width: 250,
+                          height: height/5,
+                          width: width-150,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
@@ -274,11 +278,11 @@ class _SecondScreenState extends State<SecondScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //mainAxisAlignment: MainAxisAlignment.start,
                             //crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                             Text('16, Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                            SizedBox(width: 20,),
+                            SizedBox(width: width/20,),
                             Stack(
                               clipBehavior: Clip.none,
                               children: [
@@ -322,8 +326,8 @@ class _SecondScreenState extends State<SecondScreen> {
                         children: [
                         Container(
                           margin: EdgeInsets.only(bottom: 25),
-                          height: 180,
-                          width: 250,
+                          height: height/5,
+                          width: width-150,
                           decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
                                borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
@@ -417,8 +421,8 @@ class _SecondScreenState extends State<SecondScreen> {
                         children: [
                         Container(
                           margin: EdgeInsets.only(bottom: 20),
-                          height: 180,
-                          width: 250,
+                          height: height/5,
+                          width: width-150,
                           decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.all(Radius.elliptical(20, 20)),
@@ -502,7 +506,6 @@ class _SecondScreenState extends State<SecondScreen> {
                             child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
                             padding: EdgeInsets.all(10.0)),
                     ],),
-
                 ],),
               ),
             ],),

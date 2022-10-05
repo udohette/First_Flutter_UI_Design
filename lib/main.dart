@@ -16,6 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List screens = [FirstScreen(), SecondScreen(), ThirdScreen(), ThirdScreen()];
+  List<Color> currentIndexColor = [Colors.pink.shade100, Colors.pink.shade100, Colors.pink.shade100];
   int pageIndex = 0;
   void _onItemTap(int index){
     setState(() {
@@ -44,16 +45,17 @@ class _MyAppState extends State<MyApp> {
          body: screens.elementAt(pageIndex),
          bottomNavigationBar: BottomNavigationBar(
            currentIndex: pageIndex,
+             selectedItemColor: currentIndexColor[pageIndex],
              onTap: _onItemTap,
              iconSize: 30,
              elevation: 5,
              type: BottomNavigationBarType.fixed,
              //backgroundColor: Colors.grey,
              items: [
-               BottomNavigationBarItem(label: "", icon: Icon(Icons.home_filled, color: Colors.pink[200],)),
-               BottomNavigationBarItem(label: "", icon: Icon(Icons.bookmark, color: Colors.grey,)),
-               BottomNavigationBarItem(label: "",icon: Icon(Icons.list_outlined, color: Colors.grey,)),
-               BottomNavigationBarItem(label: "",icon: Icon(Icons.person, color: Colors.grey,))
+               BottomNavigationBarItem(label: "", icon: Icon(Icons.home_filled,)),
+               BottomNavigationBarItem(label: "", icon: Icon(Icons.bookmark,)),
+               BottomNavigationBarItem(label: "",icon: Icon(Icons.list_outlined,)),
+               //BottomNavigationBarItem(label: "",icon: Icon(Icons.person,)),
              ],
          ),
         ),
