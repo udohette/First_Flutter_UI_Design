@@ -13,6 +13,14 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   TextEditingController searchField = TextEditingController();
   var size, height, width;
+
+  List<String> texts = ['All', 'Art', 'Music', 'Nature'];
+  List<Color> colors = [Colors.pink.shade200, Colors.grey.shade200, Colors.grey.shade200, Colors.grey.shade200];
+  List<String> imgPath = ['assets/images/nature.jpg', 'assets/images/nature.jpg', 'assets/images/nature.jpg', 'assets/images/nature.jpg'];
+
+  // add the icons you want to render for each entry here
+  //List<IconData> icons = [Icons.person, Icons.home, Icons.notifications];
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -21,19 +29,17 @@ class _SecondScreenState extends State<SecondScreen> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:
-      Scaffold(body: Container(
+      home: Scaffold(
+        body: Container(
         margin: EdgeInsets.all(20),
-        child:
-      SingleChildScrollView(
+        child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          color: Colors.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-           Row(
+              Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
                Column(
@@ -66,8 +72,8 @@ class _SecondScreenState extends State<SecondScreen> {
                   ],
                 ),
               ],),
-               SizedBox(height: 20,),
-               Row(
+              SizedBox(height: 20,),
+              Row(
                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
@@ -114,103 +120,35 @@ class _SecondScreenState extends State<SecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
+                      color: Colors.green,
                       height: height/6,
-                      width: width/4,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.pink[100],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                        Padding(
-                          padding:  EdgeInsets.all(10.0),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 30.0,
-                            backgroundImage: AssetImage('assets/images/music.png'),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                          child: Text('All', style: TextStyle(color: Colors.white, fontSize: 25),),
-                        ),
-                      ],),
-                    ),
-                    SizedBox(width: 20),
-                    Container(
-                      height: height/6,
-                      width: width/4,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.grey.shade200
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 30.0,
-                            backgroundImage: AssetImage('assets/images/nature.jpg'),
-                          ),
-                        ),
-                        Padding(
-                          padding:  EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                          child: Text('Art', style: TextStyle(color: Colors.black54, fontSize: 25),),
-                        )
-                      ],),
-                    ),
-                    SizedBox(width: 20),
-                    Container(
-                      height: height/6,
-                      width: width/4,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                          color: Colors.grey.shade200
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 30.0,
-                              backgroundImage: AssetImage('assets/images/art.png'),
-                            ),
-                          ),
-                          Padding(
-                            padding:  EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                            child: Text('Music', style: TextStyle(color: Colors.black54, fontSize: 25),),
-                          )
-                        ],),
-                    ),
-                    SizedBox(width: 20),
-                    Container(
-                      height: height/6,
-                      width: width/4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.grey.shade200
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 30.0,
-                              backgroundImage: AssetImage('assets/images/art.png'),
-                            ),
-                          ),
-                          Padding(
-                            padding:  EdgeInsets.only(left: 0.0,top: 0.0,right: 0.0,bottom: 20.0),
-                            child: Text('Nature', style: TextStyle(color: Colors.black54, fontSize: 25,),),
-                          )
-                        ],),
+                      //width: double.maxFinite,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          //padding: const EdgeInsets.all(8),
+                          itemCount: texts.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: height/6,
+                              width: width/4.5,
+                              margin: EdgeInsets.only(right: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: colors[index],
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 30.0,
+                                      backgroundImage: AssetImage(imgPath[index]),
+                                  ),
+                                  SizedBox(height: 0,),
+                                  Text(texts[index], style: TextStyle(color: Colors.white, fontSize: 20),),
+                                ],),
+                            );
+                          }),
                     ),
                   ],
                 ),
