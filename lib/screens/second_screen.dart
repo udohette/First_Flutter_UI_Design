@@ -16,7 +16,18 @@ class _SecondScreenState extends State<SecondScreen> {
 
   List<String> texts = ['All', 'Art', 'Music', 'Nature'];
   List<Color> colors = [Colors.pink.shade200, Colors.grey.shade200, Colors.grey.shade200, Colors.grey.shade200];
-  List<String> imgPath = ['assets/images/nature.jpg', 'assets/images/nature.jpg', 'assets/images/nature.jpg', 'assets/images/nature.jpg'];
+  List<String> imgPath = ['assets/images/nature.jpg', 'assets/images/art.png', 'assets/images/music.png/', 'assets/images/art.png'];
+
+  List<String> imgPath2 = ['assets/images/yoga.jpg', 'assets/images/congratulations.jpg', 'assets/images/yoga.jpg'] ;
+  List<String>imgPath3 = ['assets/images/sam.png','assets/images/yoga.jpg','assets/images/congratulations.jpg'];
+  List<String> firstText = ['FRI June 27 - 20:00', 'FRI June 27 - 20:00', 'FRI June 27 - 20:00'];
+  List< String> secondText = ['Yoga masterclass', 'Yoga masterclass', 'Yoga masterclass'];
+  List<String> thirdText = ['86, Joined', '17, Joined', '18, Joined'];
+  List<String> fourthText = ["Join Now ~ \$49", "Join Now ~ \$98", "Join Now ~ \$79"];
+  List<String> rateText =['+13','+13','+13'];
+
+
+
 
   // add the icons you want to render for each entry here
   //List<IconData> icons = [Icons.person, Icons.home, Icons.notifications];
@@ -121,16 +132,18 @@ class _SecondScreenState extends State<SecondScreen> {
                   children: [
                     Container(
                       color: Colors.green,
-                      height: height/6,
-                      //width: double.maxFinite,
+                      //height: 200,
+                      height: height/5,
+                      width: double.maxFinite,
                       child: ListView.builder(
+                        shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           //padding: const EdgeInsets.all(8),
                           itemCount: texts.length,
                           itemBuilder: (context, index) {
                             return Container(
-                              height: height/6,
-                              width: width/4.5,
+                              height: height/5,
+                             width: width/3.5,
                               margin: EdgeInsets.only(right: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
@@ -161,289 +174,305 @@ class _SecondScreenState extends State<SecondScreen> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      Stack(
-                        children: [
-                        Container(
-                          margin: EdgeInsets.only(bottom: 25),
-                          height: height/5,
-                          width: width-150,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
-                           //color: Colors.pink
-                            image: DecorationImage(image: AssetImage('assets/images/yoga.jpg'),
-                              fit: BoxFit.cover
-                            ),
-                          ),
-                        ),
-                          Positioned(
-                            right: 10.0,
-                            bottom: 0,
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                padding: EdgeInsets.all(5.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(30)
-                                ),
-                                child:
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.pink[200],
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Icon(Icons.bookmark, color: Colors.white,),
-                                ),
-                                //Image.asset('assets/images/music.png'),
-                            ),
+                    Container(
+                      color: Colors.green,
+                      height: height /2,
+                      width: double.maxFinite,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: firstText.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            height: 300,
+                            width: 300,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children:[
+                                Stack(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(bottom: 25),
+                                      height: height/5,
+                                      width: width-150,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
+                                        //color: Colors.pink
+                                        image: DecorationImage(image: AssetImage(imgPath2[index]),
+                                            fit: BoxFit.cover
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      right: 10.0,
+                                      bottom: 0,
+                                      child: Container(
+                                        height: 50,
+                                        width: 50,
+                                        padding: EdgeInsets.all(5.0),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(30)
+                                        ),
+                                        child:
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.pink[200],
+                                            borderRadius: BorderRadius.circular(30),
+                                          ),
+                                          child: Icon(Icons.bookmark, color: Colors.white,),
+                                        ),
+                                        //Image.asset('assets/images/music.png'),
+                                      ),
 
-                          ),
-                      ],),
-                        SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                      ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
-                        ),
-                        SizedBox(height: 10,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.start,
-                            //crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                            Text('16, Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                            SizedBox(width: width/20,),
-                            Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                              Container(
-                                margin: EdgeInsets.symmetric().copyWith(left: 0),
-                                child: CircleAvatar(
-                                  radius: 20.0,
-                                  backgroundImage: AssetImage('assets/images/sam.png'),
+                                    ),
+                                  ],),
+                                SizedBox(height: 10,),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                                  child: Text(firstText[index], style: TextStyle(color: Colors.grey, fontSize: 20),),
                                 ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric().copyWith(left: 30),
-                                child: CircleAvatar(
-                                  radius: 20.0,
-                                  backgroundImage: AssetImage('assets/images/yoga.jpg'),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                                  child: Text(secondText[index], style: TextStyle(color: Colors.black, fontSize: 25),),
                                 ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric().copyWith(left: 60),
-                                child: CircleAvatar(
-                                  radius: 20.0,
-                                  backgroundImage: AssetImage('assets/images/congratulations.jpg'),
+                                SizedBox(height: 10,),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                                  child: Row(
+                                    //mainAxisAlignment: MainAxisAlignment.start,
+                                    //crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(thirdText[index], style: TextStyle(color: Colors.grey, fontSize: 20),),
+                                      SizedBox(width: width/20,),
+                                      Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.symmetric().copyWith(left: 0),
+                                            child: CircleAvatar(
+                                              radius: 20.0,
+                                              backgroundImage: AssetImage(imgPath3[index]),
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric().copyWith(left: 30),
+                                            child: CircleAvatar(
+                                              radius: 20.0,
+                                              backgroundImage: AssetImage(imgPath3[index]),
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric().copyWith(left: 60),
+                                            child: CircleAvatar(
+                                              radius: 20.0,
+                                              backgroundImage: AssetImage(imgPath3[index]),
+                                            ),
+                                          ),
+                                        ],),
+                                      SizedBox(width: 5,),
+                                      Text(rateText[index], style: TextStyle(color: Colors.grey, fontSize: 20),)
+                                    ],),
                                 ),
-                              ),
-                            ],),
-                              SizedBox(width: 5,),
-                              Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
-                          ],),
-                        ),
-                        Padding(
-                          child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
-                            padding: EdgeInsets.all(10.0),
-                        ),
-                    ],),
-                    SizedBox(width: 10,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                      Stack(
-                        children: [
-                        Container(
-                          margin: EdgeInsets.only(bottom: 25),
-                          height: height/5,
-                          width: width-150,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                               borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
-                              //color: Colors.pink
-                              image: DecorationImage(image: AssetImage('assets/images/congratulations.jpg'),
-                                fit: BoxFit.cover
-                              )
-                          ),
-                        ),
-                        Positioned(
-                          right: 10.0,
-                          bottom: 0,
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Container(
-                                margin: EdgeInsets.all(5),
-                                height: 10,
-                                width: 10,
-                                decoration: BoxDecoration(
-                                  color: Colors.pink[200],
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Icon(Icons.bookmark, color: Colors.white,),
-                              ),
-                        ),
-                        ),
-                      ],),
-
-                      SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
-                      ),
-                      SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('16 Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                            SizedBox(width: 20,),
-                            Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.symmetric().copyWith(left: 0),
-                                  child: CircleAvatar(
-                                    radius: 20.0,
-                                    backgroundImage: AssetImage('assets/images/wallpaper.jpg'),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric().copyWith(left: 30),
-                                  child: CircleAvatar(
-                                    radius: 20.0,
-                                    backgroundImage: AssetImage('assets/images/yoga.jpg'),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric().copyWith(left: 60),
-                                  child: CircleAvatar(
-                                    radius: 20.0,
-                                    backgroundImage: AssetImage('assets/images/congratulations.jpg'),
-                                  ),
+                                Padding(
+                                  child: TextButton(onPressed: (){}, child: Text(fourthText[index], style: TextStyle(color: Colors.indigo, fontSize: 20),)),
+                                  padding: EdgeInsets.all(10.0),
                                 ),
                               ],),
-                            SizedBox(width: 5,),
-                            Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
-                          ],),
+                          );
+                        },
                       ),
-                      Padding(
-                          child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
-                          padding: EdgeInsets.all(10.0)),
-                    ],),
-                    SizedBox(width: 10,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                      Stack(
-                        children: [
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20),
-                          height: height/5,
-                          width: width-150,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.all(Radius.elliptical(20, 20)),
-                              image: DecorationImage(image: AssetImage("assets/images/yoga.jpg"),
-                                fit: BoxFit.cover
-                              )
-                              //image: DecorationImage(image: AssetImage('assets/images/congratulations.jpg'))
-                          ),
-                        ),
-                          Positioned(
-                           right: 10.0,
-                            bottom: 0,
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(30)
-                                ),
-                                child: Container(
-                                  margin: EdgeInsets.all(5),
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.pink[200],
-                                    borderRadius: BorderRadius.circular(30)
-                                  ),
-                                  child: Icon(Icons.bookmark, color: Colors.white,),
-                                ),
-                              ),
-                          ),
-                      ],),
-                        SizedBox(height: 10,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
-                        ),
-                        SizedBox(height: 10,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('16, Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                              SizedBox(width: 20,),
-                              Stack(
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.symmetric().copyWith(left: 0),
-                                    child: CircleAvatar(
-                                      radius: 20.0,
-                                      backgroundImage: AssetImage('assets/images/sam.png'),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.symmetric().copyWith(left: 30),
-                                    child: CircleAvatar(
-                                      radius: 20.0,
-                                      backgroundImage: AssetImage('assets/images/yoga.jpg'),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.symmetric().copyWith(left: 60),
-                                    child: CircleAvatar(
-                                      radius: 20.0,
-                                      backgroundImage: AssetImage('assets/images/congratulations.jpg'),
-                                    ),
-                                  ),
-                                ],),
-                              SizedBox(width: 5,),
-                              Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
-                            ],),
-                        ),
-                        Padding(
-                            child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
-                            padding: EdgeInsets.all(10.0)),
-                    ],),
+                    ),
+                    // SizedBox(width: 10,),
+                    // Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //   Stack(
+                    //     children: [
+                    //     Container(
+                    //       margin: EdgeInsets.only(bottom: 25),
+                    //       height: height/5,
+                    //       width: width-150,
+                    //       decoration: BoxDecoration(
+                    //         shape: BoxShape.rectangle,
+                    //            borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
+                    //           //color: Colors.pink
+                    //           image: DecorationImage(image: AssetImage('assets/images/congratulations.jpg'),
+                    //             fit: BoxFit.cover
+                    //           ),
+                    //       ),
+                    //     ),
+                    //     Positioned(
+                    //       right: 10.0,
+                    //       bottom: 0,
+                    //         child: Container(
+                    //           height: 50,
+                    //           width: 50,
+                    //           decoration: BoxDecoration(
+                    //             color: Colors.white,
+                    //             borderRadius: BorderRadius.circular(30),
+                    //           ),
+                    //           child: Container(
+                    //             margin: EdgeInsets.all(5),
+                    //             height: 10,
+                    //             width: 10,
+                    //             decoration: BoxDecoration(
+                    //               color: Colors.pink[200],
+                    //               borderRadius: BorderRadius.circular(20),
+                    //             ),
+                    //             child: Icon(Icons.bookmark, color: Colors.white,),
+                    //           ),
+                    //     ),
+                    //     ),
+                    //   ],),
+                    //
+                    //   SizedBox(height: 10,),
+                    //   Padding(
+                    //     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //     child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
+                    //   ),
+                    //   Padding(
+                    //     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //     child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
+                    //   ),
+                    //   SizedBox(height: 10,),
+                    //   Padding(
+                    //     padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //     child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //       //crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         Text('16 Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
+                    //         SizedBox(width: 20,),
+                    //         Stack(
+                    //           clipBehavior: Clip.none,
+                    //           children: [
+                    //             Container(
+                    //               margin: EdgeInsets.symmetric().copyWith(left: 0),
+                    //               child: CircleAvatar(
+                    //                 radius: 20.0,
+                    //                 backgroundImage: AssetImage('assets/images/wallpaper.jpg'),
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               margin: EdgeInsets.symmetric().copyWith(left: 30),
+                    //               child: CircleAvatar(
+                    //                 radius: 20.0,
+                    //                 backgroundImage: AssetImage('assets/images/yoga.jpg'),
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               margin: EdgeInsets.symmetric().copyWith(left: 60),
+                    //               child: CircleAvatar(
+                    //                 radius: 20.0,
+                    //                 backgroundImage: AssetImage('assets/images/congratulations.jpg'),
+                    //               ),
+                    //             ),
+                    //           ],),
+                    //         SizedBox(width: 5,),
+                    //         Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
+                    //       ],),
+                    //   ),
+                    //   Padding(
+                    //       child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
+                    //       padding: EdgeInsets.all(10.0)),
+                    // ],),
+                    // SizedBox(width: 10,),
+                    // Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //   Stack(
+                    //     children: [
+                    //     Container(
+                    //       margin: EdgeInsets.only(bottom: 20),
+                    //       height: height/5,
+                    //       width: width-150,
+                    //       decoration: BoxDecoration(
+                    //           shape: BoxShape.rectangle,
+                    //           borderRadius: BorderRadius.all(Radius.elliptical(20, 20)),
+                    //           image: DecorationImage(image: AssetImage("assets/images/yoga.jpg"),
+                    //             fit: BoxFit.cover
+                    //           )
+                    //           //image: DecorationImage(image: AssetImage('assets/images/congratulations.jpg'))
+                    //       ),
+                    //     ),
+                    //       Positioned(
+                    //        right: 10.0,
+                    //         bottom: 0,
+                    //           child: Container(
+                    //             height: 50,
+                    //             width: 50,
+                    //             decoration: BoxDecoration(
+                    //               color: Colors.white,
+                    //               borderRadius: BorderRadius.circular(30)
+                    //             ),
+                    //             child: Container(
+                    //               margin: EdgeInsets.all(5),
+                    //               height: 20,
+                    //               width: 20,
+                    //               decoration: BoxDecoration(
+                    //                 color: Colors.pink[200],
+                    //                 borderRadius: BorderRadius.circular(30)
+                    //               ),
+                    //               child: Icon(Icons.bookmark, color: Colors.white,),
+                    //             ),
+                    //           ),
+                    //       ),
+                    //   ],),
+                    //     SizedBox(height: 10,),
+                    //     Padding(
+                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //       child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
+                    //     ),
+                    //     Padding(
+                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //       child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
+                    //     ),
+                    //     SizedBox(height: 10,),
+                    //     Padding(
+                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //       child: Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         //crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Text('16, Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
+                    //           SizedBox(width: 20,),
+                    //           Stack(
+                    //             clipBehavior: Clip.none,
+                    //             children: [
+                    //               Container(
+                    //                 margin: EdgeInsets.symmetric().copyWith(left: 0),
+                    //                 child: CircleAvatar(
+                    //                   radius: 20.0,
+                    //                   backgroundImage: AssetImage('assets/images/sam.png'),
+                    //                 ),
+                    //               ),
+                    //               Container(
+                    //                 margin: EdgeInsets.symmetric().copyWith(left: 30),
+                    //                 child: CircleAvatar(
+                    //                   radius: 20.0,
+                    //                   backgroundImage: AssetImage('assets/images/yoga.jpg'),
+                    //                 ),
+                    //               ),
+                    //               Container(
+                    //                 margin: EdgeInsets.symmetric().copyWith(left: 60),
+                    //                 child: CircleAvatar(
+                    //                   radius: 20.0,
+                    //                   backgroundImage: AssetImage('assets/images/congratulations.jpg'),
+                    //                 ),
+                    //               ),
+                    //             ],),
+                    //           SizedBox(width: 5,),
+                    //           Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
+                    //         ],),
+                    //     ),
+                    //     Padding(
+                    //         child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
+                    //         padding: EdgeInsets.all(10.0)),
+                    // ],),
                 ],),
               ),
             ],),
