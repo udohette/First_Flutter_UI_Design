@@ -131,10 +131,11 @@ class _SecondScreenState extends State<SecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      color: Colors.green,
+                     // color: Colors.green,
                       //height: 200,
                       height: height/5,
-                      width: double.maxFinite,
+                     // width: double.maxFinite,
+                      width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
                         shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
@@ -175,9 +176,9 @@ class _SecondScreenState extends State<SecondScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      color: Colors.green,
+                      //color: Colors.green,
                       height: height /2,
-                      width: double.maxFinite,
+                      width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: firstText.length,
