@@ -19,9 +19,9 @@ class _SecondScreenState extends State<SecondScreen> {
   List<String> imgPath = ['assets/images/nature.jpg', 'assets/images/art.png', 'assets/images/music.png/', 'assets/images/art.png'];
 
   List<String> imgPath2 = ['assets/images/yoga.jpg', 'assets/images/congratulations.jpg', 'assets/images/yoga.jpg'] ;
-  List<String>imgPath3 = ['assets/images/sam.png','assets/images/yoga.jpg','assets/images/congratulations.jpg'];
-  List<String> firstText = ['FRI June 27 - 20:00', 'FRI June 27 - 20:00', 'FRI June 27 - 20:00'];
-  List< String> secondText = ['Yoga masterclass', 'Yoga masterclass', 'Yoga masterclass'];
+  List<String>imgPath3 =            ['assets/images/sam.png','assets/images/yoga.jpg','assets/images/congratulations.jpg'];
+  List<String> firstText= ['FRI June 27 - 20:00', 'FRI June 27 - 20:00', 'FRI June 27 - 20:00'];
+  List< String> secondText= ['Yoga masterclass', 'Yoga masterclass', 'Yoga masterclass'];
   List<String> thirdText = ['86, Joined', '17, Joined', '18, Joined'];
   List<String> fourthText = ["Join Now ~ \$49", "Join Now ~ \$98", "Join Now ~ \$79"];
   List<String> rateText =['+13','+13','+13'];
@@ -51,14 +51,19 @@ class _SecondScreenState extends State<SecondScreen> {
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
-               Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 children: [
-                   Text('Hello,',style: TextStyle(color: Colors.grey, fontSize: 20),),
-                   Text('Savanna Nguyen',style: TextStyle(color: Colors.black, fontSize: 35),),
-                 ],
+               //added expand to  resolved overflow issues
+               Expanded(
+                 flex: 1,
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text('Hello,',style: TextStyle(color: Colors.grey, fontSize: 20),),
+                     Text('Savanna Nguyen',style: TextStyle(color: Colors.black, fontSize: 35),),
+                   ],
+                 ),
                ),
                 Stack(
                   children: [
@@ -73,8 +78,8 @@ class _SecondScreenState extends State<SecondScreen> {
                         child:
                     Container(
                       margin: EdgeInsets.only(top: 5),
-                      height: 10,
-                      width: 10,
+                      height: MediaQuery.of(context).size.height/90,
+                      width: MediaQuery.of(context).size.height/90,
                       decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(30)
@@ -83,33 +88,36 @@ class _SecondScreenState extends State<SecondScreen> {
                   ],
                 ),
               ],),
-              SizedBox(height: 20,),
+              SizedBox(height: MediaQuery.of(context).size.height/50,),
               Row(
                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      height: 50,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(30),
-                        border: Border.all(color: Colors.grey, style: BorderStyle.solid, width: 1),
-                        //boxShadow:[BoxShadow(color: Colors.grey)]
-                      ),
-                      child: TextField(
-                        controller: searchField,
-                        decoration: InputDecoration(
-                          border:OutlineInputBorder(borderRadius: BorderRadius.circular(30.0), borderSide: BorderSide.none),
-                          hintText: 'Search for Event...',
-                          prefixIcon: Icon(Icons.search, color: Colors.grey,),
-                          suffixIcon: Icon(Icons.mic, color: Colors.grey,)
+                    //added expand to  resolved overflow issues
+                    Expanded(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height/15,
+                        width: MediaQuery.of(context).size.height/2,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(color: Colors.grey, style: BorderStyle.solid, width: 1),
+                          //boxShadow:[BoxShadow(color: Colors.grey)]
+                        ),
+                        child: TextField(
+                          controller: searchField,
+                          decoration: InputDecoration(
+                            border:OutlineInputBorder(borderRadius: BorderRadius.circular(30.0), borderSide: BorderSide.none),
+                            hintText: 'Search for Event...',
+                            prefixIcon: Icon(Icons.search, color: Colors.grey,),
+                            suffixIcon: Icon(Icons.mic, color: Colors.grey,)
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(width: MediaQuery.of(context).size.height/30,),
                     Container(
-                      height: 50,
-                      width: 50,
+                      height: MediaQuery.of(context).size.height/15,
+                      width: MediaQuery.of(context).size.height/15,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30),
@@ -123,7 +131,7 @@ class _SecondScreenState extends State<SecondScreen> {
                       ],)
                     )
                 ],),
-              SizedBox(height: 20,),
+              SizedBox(height: MediaQuery.of(context).size.height/30,),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -137,6 +145,7 @@ class _SecondScreenState extends State<SecondScreen> {
                      // width: double.maxFinite,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
                         shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           //padding: const EdgeInsets.all(8),
@@ -167,9 +176,9 @@ class _SecondScreenState extends State<SecondScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: MediaQuery.of(context).size.height/80,),
               Text("Events For you", style: GoogleFonts.alef(fontWeight: FontWeight.bold, fontSize: 30)),
-              SizedBox(height: 10),
+              SizedBox(height: MediaQuery.of(context).size.height/80),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -177,16 +186,18 @@ class _SecondScreenState extends State<SecondScreen> {
                   children: [
                     Container(
                       //color: Colors.green,
-                      height: height /2,
+                      height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: firstText.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Container(
-                            height: 300,
-                            width: 300,
+                            height: MediaQuery.of(context).size.height/3,
+                            //width: MediaQuery.of(context).size.width   1000/2 = 500,
+                            width: MediaQuery.of(context).size.width/2.4,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:[
@@ -195,7 +206,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                     Container(
                                       margin: EdgeInsets.only(bottom: 25),
                                       height: height/5,
-                                      width: width-150,
+                                      width: width/2.5,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
@@ -209,8 +220,8 @@ class _SecondScreenState extends State<SecondScreen> {
                                       right: 10.0,
                                       bottom: 0,
                                       child: Container(
-                                        height: 50,
-                                        width: 50,
+                                        height: MediaQuery.of(context).size.height/20,
+                                        width:  MediaQuery.of(context).size.height/20,
                                         padding: EdgeInsets.all(5.0),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
@@ -229,7 +240,7 @@ class _SecondScreenState extends State<SecondScreen> {
 
                                     ),
                                   ],),
-                                SizedBox(height: 10,),
+                                SizedBox(height: MediaQuery.of(context).size.height/50),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 20),
                                   child: Text(firstText[index], style: TextStyle(color: Colors.grey, fontSize: 20),),
@@ -238,42 +249,40 @@ class _SecondScreenState extends State<SecondScreen> {
                                   padding: const EdgeInsets.symmetric(horizontal: 20),
                                   child: Text(secondText[index], style: TextStyle(color: Colors.black, fontSize: 25),),
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(height: MediaQuery.of(context).size.height/70),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 20),
                                   child: Row(
-                                    //mainAxisAlignment: MainAxisAlignment.start,
                                     //crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(thirdText[index], style: TextStyle(color: Colors.grey, fontSize: 20),),
-                                      SizedBox(width: width/20,),
-                                      Stack(
-                                        clipBehavior: Clip.none,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.symmetric().copyWith(left: 0),
-                                            child: CircleAvatar(
-                                              radius: 20.0,
-                                              backgroundImage: AssetImage(imgPath3[index]),
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric().copyWith(left: 30),
-                                            child: CircleAvatar(
-                                              radius: 20.0,
-                                              backgroundImage: AssetImage(imgPath3[index]),
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric().copyWith(left: 60),
-                                            child: CircleAvatar(
-                                              radius: 20.0,
-                                              backgroundImage: AssetImage(imgPath3[index]),
-                                            ),
-                                          ),
-                                        ],),
-                                      SizedBox(width: 5,),
-                                      Text(rateText[index], style: TextStyle(color: Colors.grey, fontSize: 20),)
+                                      Text(thirdText[index], style: TextStyle(color: Colors.grey, fontSize: 15),),
+                                      SizedBox(width: width/80,),
+                                     //to take the size of the available space
+                                     Expanded(
+                                       child: Container(
+                                         height: MediaQuery.of(context).size.height/20,
+                                         width: MediaQuery.of(context).size.width/5,
+                                         child: ListView.builder(
+                                           shrinkWrap: true,
+                                           scrollDirection: Axis.horizontal,
+                                           itemCount: imgPath3.length,
+                                             itemBuilder: (BuildContext context, index){
+                                           return Stack(
+                                             clipBehavior: Clip.none,
+                                             children: [
+                                               Container(
+                                                 margin: EdgeInsets.symmetric().copyWith(left: 0),
+                                                 child: CircleAvatar(
+                                                   radius: 20.0,
+                                                   backgroundImage: AssetImage(imgPath3[index]),
+                                                 ),
+                                               ),
+                                             ],);
+                                         }),
+                                       ),
+                                     ),
+
+                                      Text(rateText[index], style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 15),)
                                     ],),
                                 ),
                                 Padding(
@@ -285,195 +294,6 @@ class _SecondScreenState extends State<SecondScreen> {
                         },
                       ),
                     ),
-                    // SizedBox(width: 10,),
-                    // Column(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //   Stack(
-                    //     children: [
-                    //     Container(
-                    //       margin: EdgeInsets.only(bottom: 25),
-                    //       height: height/5,
-                    //       width: width-150,
-                    //       decoration: BoxDecoration(
-                    //         shape: BoxShape.rectangle,
-                    //            borderRadius: BorderRadius.all(Radius.elliptical(18, 18)),
-                    //           //color: Colors.pink
-                    //           image: DecorationImage(image: AssetImage('assets/images/congratulations.jpg'),
-                    //             fit: BoxFit.cover
-                    //           ),
-                    //       ),
-                    //     ),
-                    //     Positioned(
-                    //       right: 10.0,
-                    //       bottom: 0,
-                    //         child: Container(
-                    //           height: 50,
-                    //           width: 50,
-                    //           decoration: BoxDecoration(
-                    //             color: Colors.white,
-                    //             borderRadius: BorderRadius.circular(30),
-                    //           ),
-                    //           child: Container(
-                    //             margin: EdgeInsets.all(5),
-                    //             height: 10,
-                    //             width: 10,
-                    //             decoration: BoxDecoration(
-                    //               color: Colors.pink[200],
-                    //               borderRadius: BorderRadius.circular(20),
-                    //             ),
-                    //             child: Icon(Icons.bookmark, color: Colors.white,),
-                    //           ),
-                    //     ),
-                    //     ),
-                    //   ],),
-                    //
-                    //   SizedBox(height: 10,),
-                    //   Padding(
-                    //     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //     child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                    //   ),
-                    //   Padding(
-                    //     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //     child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
-                    //   ),
-                    //   SizedBox(height: 10,),
-                    //   Padding(
-                    //     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //     child: Row(
-                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //       //crossAxisAlignment: CrossAxisAlignment.start,
-                    //       children: [
-                    //         Text('16 Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                    //         SizedBox(width: 20,),
-                    //         Stack(
-                    //           clipBehavior: Clip.none,
-                    //           children: [
-                    //             Container(
-                    //               margin: EdgeInsets.symmetric().copyWith(left: 0),
-                    //               child: CircleAvatar(
-                    //                 radius: 20.0,
-                    //                 backgroundImage: AssetImage('assets/images/wallpaper.jpg'),
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               margin: EdgeInsets.symmetric().copyWith(left: 30),
-                    //               child: CircleAvatar(
-                    //                 radius: 20.0,
-                    //                 backgroundImage: AssetImage('assets/images/yoga.jpg'),
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               margin: EdgeInsets.symmetric().copyWith(left: 60),
-                    //               child: CircleAvatar(
-                    //                 radius: 20.0,
-                    //                 backgroundImage: AssetImage('assets/images/congratulations.jpg'),
-                    //               ),
-                    //             ),
-                    //           ],),
-                    //         SizedBox(width: 5,),
-                    //         Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
-                    //       ],),
-                    //   ),
-                    //   Padding(
-                    //       child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
-                    //       padding: EdgeInsets.all(10.0)),
-                    // ],),
-                    // SizedBox(width: 10,),
-                    // Column(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //   Stack(
-                    //     children: [
-                    //     Container(
-                    //       margin: EdgeInsets.only(bottom: 20),
-                    //       height: height/5,
-                    //       width: width-150,
-                    //       decoration: BoxDecoration(
-                    //           shape: BoxShape.rectangle,
-                    //           borderRadius: BorderRadius.all(Radius.elliptical(20, 20)),
-                    //           image: DecorationImage(image: AssetImage("assets/images/yoga.jpg"),
-                    //             fit: BoxFit.cover
-                    //           )
-                    //           //image: DecorationImage(image: AssetImage('assets/images/congratulations.jpg'))
-                    //       ),
-                    //     ),
-                    //       Positioned(
-                    //        right: 10.0,
-                    //         bottom: 0,
-                    //           child: Container(
-                    //             height: 50,
-                    //             width: 50,
-                    //             decoration: BoxDecoration(
-                    //               color: Colors.white,
-                    //               borderRadius: BorderRadius.circular(30)
-                    //             ),
-                    //             child: Container(
-                    //               margin: EdgeInsets.all(5),
-                    //               height: 20,
-                    //               width: 20,
-                    //               decoration: BoxDecoration(
-                    //                 color: Colors.pink[200],
-                    //                 borderRadius: BorderRadius.circular(30)
-                    //               ),
-                    //               child: Icon(Icons.bookmark, color: Colors.white,),
-                    //             ),
-                    //           ),
-                    //       ),
-                    //   ],),
-                    //     SizedBox(height: 10,),
-                    //     Padding(
-                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //       child: Text('FRI June 27 - 20:00', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                    //     ),
-                    //     Padding(
-                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //       child: Text('Yoga masterclass', style: TextStyle(color: Colors.black, fontSize: 25),),
-                    //     ),
-                    //     SizedBox(height: 10,),
-                    //     Padding(
-                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //       child: Row(
-                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //         //crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           Text('16, Joined', style: TextStyle(color: Colors.grey, fontSize: 20),),
-                    //           SizedBox(width: 20,),
-                    //           Stack(
-                    //             clipBehavior: Clip.none,
-                    //             children: [
-                    //               Container(
-                    //                 margin: EdgeInsets.symmetric().copyWith(left: 0),
-                    //                 child: CircleAvatar(
-                    //                   radius: 20.0,
-                    //                   backgroundImage: AssetImage('assets/images/sam.png'),
-                    //                 ),
-                    //               ),
-                    //               Container(
-                    //                 margin: EdgeInsets.symmetric().copyWith(left: 30),
-                    //                 child: CircleAvatar(
-                    //                   radius: 20.0,
-                    //                   backgroundImage: AssetImage('assets/images/yoga.jpg'),
-                    //                 ),
-                    //               ),
-                    //               Container(
-                    //                 margin: EdgeInsets.symmetric().copyWith(left: 60),
-                    //                 child: CircleAvatar(
-                    //                   radius: 20.0,
-                    //                   backgroundImage: AssetImage('assets/images/congratulations.jpg'),
-                    //                 ),
-                    //               ),
-                    //             ],),
-                    //           SizedBox(width: 5,),
-                    //           Text('+13', style: TextStyle(color: Colors.grey, fontSize: 20),)
-                    //         ],),
-                    //     ),
-                    //     Padding(
-                    //         child: TextButton(onPressed: (){}, child: Text("Join Now ~ \$99", style: TextStyle(color: Colors.indigo, fontSize: 20),)),
-                    //         padding: EdgeInsets.all(10.0)),
-                    // ],),
                 ],),
               ),
             ],),
