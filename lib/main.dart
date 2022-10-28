@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ui_assignment/screens/first_screen.dart';
+import 'package:ui_assignment/screens/login_screen.dart';
 import 'package:ui_assignment/screens/second_screen.dart';
+import 'package:ui_assignment/screens/splash_screen.dart';
 import 'package:ui_assignment/screens/third_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SplashScreen(key: UniqueKey(), onInitializeComplete: ()=>runApp(MaterialApp(home: LoginScreen(),)) ));
 }
 
 class MyApp extends StatefulWidget {

@@ -303,41 +303,25 @@ class _SecondScreenState extends State<SecondScreen> {
                                         right: 10.0,
                                         bottom: 0,
                                         child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              20,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              20,
+                                          height: MediaQuery.of(context).size.height / 20,
+                                          width: MediaQuery.of(context).size.height / 20,
                                           padding: EdgeInsets.all(5.0),
                                           decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      30)),
+                                              borderRadius: BorderRadius.circular(30)),
                                           child: Container(
                                             decoration: BoxDecoration(
                                               color: Colors.pink[200],
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
+                                              borderRadius: BorderRadius.circular(30),
                                             ),
-                                            child: const Icon(
-                                              Icons.bookmark,
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                            child: const Icon(Icons.bookmark, color: Colors.white,),),
                                           //Image.asset('assets/images/music.png'),
                                         ),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
-                                      height: MediaQuery.of(context)
-                                              .size
-                                              .height /
-                                          50),
+                                      height: MediaQuery.of(context).size.height / 50),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 20),
