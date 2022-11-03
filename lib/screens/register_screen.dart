@@ -76,6 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                             child: TextField(
+                              textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.person, color: Colors.grey,),
                                   hintText: 'Full Name',
@@ -92,6 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                             child: TextField(
+                              textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.email, color: Colors.grey,),
                                   hintText: 'Email',
@@ -108,6 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                             child: TextField(
+                              textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.phone, color: Colors.grey,),
                                   hintText: 'Phone Number',
@@ -124,6 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                             child: TextField(
+                              textInputAction: TextInputAction.done,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.key, color: Colors.grey,),
                                   hintText: 'Password',
@@ -139,19 +143,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Card(
                               elevation: 12,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                              child: Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 50,
-                                  width: 500,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    color: Colors.deepOrangeAccent,
-                                  ),
-                                  child: TextButton(
-
-                                      onPressed: (){}, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
+                              child: Container(
+                                height: 50,
+                                width: 500,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  color: Colors.deepOrangeAccent,
                                 ),
+                                child: TextButton(
+
+                                    onPressed: (){}, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
                               )
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/30,),
@@ -160,7 +161,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             children: [
                               Text('Already have an Account?',style: GoogleFonts.montserrat(fontSize: 15, color: Colors.grey, fontWeight: FontWeight.bold),),
                               TextButton(
-
                                   onPressed: (){
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
                                   }, child: Text("Login", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.deepOrangeAccent, fontWeight: FontWeight.bold),)),

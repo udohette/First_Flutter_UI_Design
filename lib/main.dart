@@ -6,7 +6,7 @@ import 'package:ui_assignment/screens/splash_screen.dart';
 import 'package:ui_assignment/screens/third_screen.dart';
 
 void main() {
-  runApp(SplashScreen(key: UniqueKey(), onInitializeComplete: ()=>runApp(MaterialApp(home: LoginScreen(),)) ));
+  runApp(SplashScreen());
 }
 
 class MyApp extends StatefulWidget {

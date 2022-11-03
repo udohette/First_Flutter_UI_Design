@@ -76,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   elevation: 12,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   child: TextField(
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email, color: Colors.grey,),
                       hintText: 'Email',
@@ -92,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     elevation: 12,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     child: TextField(
+                      textInputAction: TextInputAction.done,
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.key, color: Colors.grey,),
                           hintText: 'Password',
