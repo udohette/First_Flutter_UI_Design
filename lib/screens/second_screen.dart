@@ -86,7 +86,7 @@ class _SecondScreenState extends State<SecondScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Hello,',
                               style: TextStyle(
                                   color: Colors.grey, fontSize: 20),
@@ -358,7 +358,7 @@ class _SecondScreenState extends State<SecondScreen> {
                                       children: [
                                         Text(
                                           thirdText[index],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.grey,
                                               fontSize: 15),
                                         ),

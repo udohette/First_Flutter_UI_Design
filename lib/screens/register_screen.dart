@@ -162,7 +162,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               Text('Already have an Account?',style: GoogleFonts.montserrat(fontSize: 15, color: Colors.grey, fontWeight: FontWeight.bold),),
                               TextButton(
                                   onPressed: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                                    Navigator.pop(context);
+                                    //Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
                                   }, child: Text("Login", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.deepOrangeAccent, fontWeight: FontWeight.bold),)),
                             ],)
                         ],),
