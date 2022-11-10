@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_assignment/screens/login_screen.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -11,6 +13,12 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormState> _globalKey = GlobalKey();
+  bool obscure = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -75,16 +83,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Card(
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextField(
-                              textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.person, color: Colors.grey,),
-                                  hintText: 'Full Name',
-                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                                  focusColor: Colors.grey,
-                                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                            child: Form(
+                              key: _globalKey,
+                              child: TextFormField(
+                                controller: fullNameController,
+                                validator: (value) {
+                                  if (value.toString().isEmpty) {
+                                    return "Required";
+                                  } else {
+                                  }
+                                },
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.person, color: Colors.grey,),
+                                    hintText: 'Full Name',
+                                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                    focusColor: Colors.grey,
+                                    errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                                ),
                               ),
                             ),
                           ),
@@ -92,7 +110,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Card(
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextField(
+                            child: TextFormField(
+                              controller: emailController,
+                              validator: MultiValidator([RequiredValidator(errorText: 'Required'), EmailValidator(errorText: 'Enter a valid email address')
+                              ]) ,
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.email, color: Colors.grey,),
@@ -109,7 +130,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Card(
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextField(
+                            child: TextFormField(
+                              controller: phoneNumberController,
+                              validator: MultiValidator([RequiredValidator(errorText: 'Required')]),
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.phone, color: Colors.grey,),
@@ -126,8 +149,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Card(
                             elevation: 12,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextField(
+                            child: TextFormField(
+                              validator: MultiValidator([RequiredValidator(errorText: 'Required'),
+                                MaxLengthValidator(8, errorText: 'Max Password Required is 8'), MinLengthValidator(4, errorText: 'Min Password require is 4 Characters')]),
                               textInputAction: TextInputAction.done,
+                              controller: passwordController,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.key, color: Colors.grey,),
                                   hintText: 'Password',
@@ -151,8 +177,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   color: Colors.deepOrangeAccent,
                                 ),
                                 child: TextButton(
-
-                                    onPressed: (){}, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
+                                    onPressed: (){
+                                      if (_globalKey.currentState!.validate()) {
+                                        Fluttertoast.showToast(msg: 'Validation Successful');
+                                      } else {
+                                        Fluttertoast.showToast(msg: 'Validation not  Successful');
+                                      }
+                                    }, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
                               )
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/30,),
