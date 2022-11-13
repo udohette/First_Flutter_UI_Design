@@ -80,111 +80,91 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Card(
-                            elevation: 12,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: Form(
-                              key: _globalKey,
-                              child: TextFormField(
-                                controller: fullNameController,
-                                validator: (value) {
-                                  if (value.toString().isEmpty) {
-                                    return "Required";
+                          Form(
+                            key: _globalKey,
+                            child: TextFormField(
+                              controller: fullNameController,
+                              validator: (value) {
+                                if (value.toString().isEmpty) {
+                                  return "Required";
+                                } else {
+                                }
+                              },
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.person, color: Colors.grey,),
+                                  hintText: 'Full Name',
+                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                  focusColor: Colors.grey,
+                                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height/40,),
+                          TextFormField(
+                            controller: emailController,
+                            validator: MultiValidator([RequiredValidator(errorText: 'Required'), EmailValidator(errorText: 'Enter a valid email address')
+                            ]) ,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.email, color: Colors.grey,),
+                                hintText: 'Email',
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                focusColor: Colors.grey,
+                                errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                            ),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height/40,),
+                          TextFormField(
+                            controller: phoneNumberController,
+                            validator: MultiValidator([RequiredValidator(errorText: 'Required')]),
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.phone, color: Colors.grey,),
+                                hintText: 'Phone Number',
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                focusColor: Colors.grey,
+                                errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                            ),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height/40,),
+                          TextFormField(
+                            validator: MultiValidator([RequiredValidator(errorText: 'Required'),
+                              MaxLengthValidator(8, errorText: 'Max Password Required is 8'), MinLengthValidator(4, errorText: 'Min Password require is 4 Characters')]),
+                            textInputAction: TextInputAction.done,
+                            controller: passwordController,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.key, color: Colors.grey,),
+                                hintText: 'Password',
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                focusColor: Colors.grey,
+                                errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                            ),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height/40,),
+                          Container(
+                            height: 50,
+                            width: 500,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.0),
+                              color: Colors.deepOrangeAccent,
+                            ),
+                            child: TextButton(
+                                onPressed: (){
+                                  if (_globalKey.currentState!.validate()) {
+                                    Fluttertoast.showToast(msg: 'Validation Successful');
                                   } else {
+                                    Fluttertoast.showToast(msg: 'Validation not  Successful');
                                   }
-                                },
-                                textInputAction: TextInputAction.next,
-                                decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.person, color: Colors.grey,),
-                                    hintText: 'Full Name',
-                                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                                    focusColor: Colors.grey,
-                                    errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: MediaQuery.of(context).size.height/40,),
-                          Card(
-                            elevation: 12,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextFormField(
-                              controller: emailController,
-                              validator: MultiValidator([RequiredValidator(errorText: 'Required'), EmailValidator(errorText: 'Enter a valid email address')
-                              ]) ,
-                              textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.email, color: Colors.grey,),
-                                  hintText: 'Email',
-                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                                  focusColor: Colors.grey,
-                                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: MediaQuery.of(context).size.height/40,),
-                          Card(
-                            elevation: 12,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextFormField(
-                              controller: phoneNumberController,
-                              validator: MultiValidator([RequiredValidator(errorText: 'Required')]),
-                              textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.phone, color: Colors.grey,),
-                                  hintText: 'Phone Number',
-                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                                  focusColor: Colors.grey,
-                                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: MediaQuery.of(context).size.height/40,),
-                          Card(
-                            elevation: 12,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                            child: TextFormField(
-                              validator: MultiValidator([RequiredValidator(errorText: 'Required'),
-                                MaxLengthValidator(8, errorText: 'Max Password Required is 8'), MinLengthValidator(4, errorText: 'Min Password require is 4 Characters')]),
-                              textInputAction: TextInputAction.done,
-                              controller: passwordController,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.key, color: Colors.grey,),
-                                  hintText: 'Password',
-                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                                  focusColor: Colors.grey,
-                                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                                  enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: MediaQuery.of(context).size.height/40,),
-                          Card(
-                              elevation: 12,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                              child: Container(
-                                height: 50,
-                                width: 500,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  color: Colors.deepOrangeAccent,
-                                ),
-                                child: TextButton(
-                                    onPressed: (){
-                                      if (_globalKey.currentState!.validate()) {
-                                        Fluttertoast.showToast(msg: 'Validation Successful');
-                                      } else {
-                                        Fluttertoast.showToast(msg: 'Validation not  Successful');
-                                      }
-                                    }, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
-                              )
+                                }, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/30,),
                           Row(

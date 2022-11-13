@@ -96,58 +96,50 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                  Card(
-                    elevation: 12,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                    child: Form(
-                      key: _globalKey,
-                      child: TextFormField(
-                        validator: MultiValidator([
-                          RequiredValidator(errorText: "Required"),
-                          EmailValidator(errorText: 'Please enter a valid email address')
-                        ]),
-                        controller: emailController,
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email, color: Colors.grey,),
-                          hintText: 'Email',
-                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                          focusColor: Colors.grey,
-                          errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                           enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
-                        ),
+                  Form(
+                    key: _globalKey,
+                    child: TextFormField(
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: "Required"),
+                        EmailValidator(errorText: 'Please enter a valid email address')
+                      ]),
+                      controller: emailController,
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email, color: Colors.grey,),
+                        hintText: 'Email',
+                        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                        focusColor: Colors.grey,
+                        errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                         enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
                       ),
                     ),
                   ),
                     SizedBox(height: MediaQuery.of(context).size.height/40,),
-                    Card(
-                      elevation: 12,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                      child: TextFormField(
-                        validator: MultiValidator([
-                          RequiredValidator(errorText: 'Required'),
-                          MinLengthValidator(6, errorText: "Password must contain at least 6 characters"),
-                          MaxLengthValidator(8, errorText: 'Password must not be more than 8 characters'),
-                          PatternValidator(r'(?=.*?[#?!@$%^&*-])', errorText: 'Password must have at least one special character')
-                        ]),
-                        controller: passwordController,
-                        textInputAction: TextInputAction.done,
-                        decoration: InputDecoration(
-                            prefixIcon: IconButton(onPressed: (){
-                              setState(() {
-                                obscure = !obscure;
-                              });
-                            }, icon: Icon(Icons.visibility)),
-                            hintText: 'Password',
-                            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
-                            focusColor: Colors.grey,
-                            errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red,)),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
-                        ),
-                        ),
+                    TextFormField(
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: 'Required'),
+                        MinLengthValidator(6, errorText: "Password must contain at least 6 characters"),
+                        MaxLengthValidator(8, errorText: 'Password must not be more than 8 characters'),
+                        PatternValidator(r'(?=.*?[#?!@$%^&*-])', errorText: 'Password must have at least one special character')
+                      ]),
+                      controller: passwordController,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                          prefixIcon: IconButton(onPressed: (){
+                            setState(() {
+                              obscure = !obscure;
+                            });
+                          }, icon: Icon(Icons.visibility)),
+                          hintText: 'Password',
+                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                          focusColor: Colors.grey,
+                          errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide(color: Colors.grey))
+                      ),
                       ),
                     SizedBox(height: MediaQuery.of(context).size.height/40,),
                     Row(
