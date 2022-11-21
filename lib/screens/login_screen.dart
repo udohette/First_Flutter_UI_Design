@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email, color: Colors.grey,),
                         hintText: 'Email',
-                        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(30)),
                         focusColor: Colors.grey,
                         errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -119,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                     SizedBox(height: MediaQuery.of(context).size.height/40,),
                     TextFormField(
+                      obscureText: true,
                       validator: MultiValidator([
                         RequiredValidator(errorText: 'Required'),
                         MinLengthValidator(6, errorText: "Password must contain at least 6 characters"),
@@ -134,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           }, icon: Icon(Icons.visibility)),
                           hintText: 'Password',
-                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(30)),
                           focusColor: Colors.grey,
                           errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -161,13 +162,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextButton(
                             onPressed: (){
                               setState(() {
-                               if (_globalKey.currentState!.validate()) {
-                                 Fluttertoast.showToast(msg: 'Validation Successful');
+                               if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+                                 Fluttertoast.showToast(msg: 'All  Field Required Successful');
                                  //please i can't use ScaffoldMessenger, comment out and run code to  see error on  console
                                  //ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.white,content: Text('Validation Not Successful',style: TextStyle(color: Colors.black,))));
-                               } else {
-                                 Fluttertoast.showToast(msg: 'Validation Not Successful');
+                               } else if(_globalKey.currentState!.validate()){
+                                 Fluttertoast.showToast(msg: 'validation Successful');
                                 // ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.white,content: Text('Validation Successful',style: TextStyle(color: Colors.black,))));
+                               }else{
+                                 Fluttertoast.showToast(msg: 'please enter a valid email');
                                }
                               });
                             },

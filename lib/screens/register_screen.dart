@@ -94,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.person, color: Colors.grey,),
                                   hintText: 'Full Name',
-                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(30)),
                                   focusColor: Colors.grey,
                                   errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -104,14 +104,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/40,),
                           TextFormField(
+                            validator: MultiValidator([
+                              RequiredValidator(errorText: "Required"),
+                              EmailValidator(errorText: 'Please enter a valid email address')
+                            ]),
                             controller: emailController,
-                            validator: MultiValidator([RequiredValidator(errorText: 'Required'), EmailValidator(errorText: 'Enter a valid email address')
-                            ]) ,
                             textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.email, color: Colors.grey,),
                                 hintText: 'Email',
-                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(30)),
                                 focusColor: Colors.grey,
                                 errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -120,13 +123,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/40,),
                           TextFormField(
+                            keyboardType: TextInputType.number,
                             controller: phoneNumberController,
                             validator: MultiValidator([RequiredValidator(errorText: 'Required')]),
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.phone, color: Colors.grey,),
                                 hintText: 'Phone Number',
-                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(30)),
                                 focusColor: Colors.grey,
                                 errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -135,6 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/40,),
                           TextFormField(
+                            obscureText: true,
                             validator: MultiValidator([RequiredValidator(errorText: 'Required'),
                               MaxLengthValidator(8, errorText: 'Max Password Required is 8'), MinLengthValidator(4, errorText: 'Min Password require is 4 Characters')]),
                             textInputAction: TextInputAction.done,
@@ -142,7 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.key, color: Colors.grey,),
                                 hintText: 'Password',
-                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrangeAccent), borderRadius: BorderRadius.circular(30)),
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.circular(30)),
                                 focusColor: Colors.grey,
                                 errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -159,11 +164,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             child: TextButton(
                                 onPressed: (){
-                                  if (_globalKey.currentState!.validate()) {
-                                    Fluttertoast.showToast(msg: 'Validation Successful');
-                                  } else {
-                                    Fluttertoast.showToast(msg: 'Validation not  Successful');
-                                  }
+                                  setState(() {
+                                    if (fullNameController.text.isEmpty || emailController.text.isEmpty || phoneNumberController.text.isEmpty || passwordController.text.isEmpty) {
+                                      Fluttertoast.showToast(msg: 'All  field are Required');
+                                    } else if(_globalKey.currentState!.validate()) {
+                                      Fluttertoast.showToast(msg: 'Validation Successful');
+                                    }else{
+                                      Fluttertoast.showToast(msg: 'Enter a valid email address');
+                                    }
+                                  });
                                 }, child: Text("Register", style: GoogleFonts.montserrat(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),)),
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height/30,),
